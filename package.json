@@ -1,0 +1,28 @@
+{
+  "name": "personal-homepage",
+  "version": "1.0.0",
+  "description": "Implementing a personal homepage using HTML5, CSS3 and ES6+",
+  "main": "index.js",
+  "type": "module",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/mrejuan3/Personal-Homepage.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/mrejuan3/Personal-Homepage/issues"
+  },
+  "homepage": "https://github.com/mrejuan3/Personal-Homepage#readme",
+  "devDependencies": {
+    "@eslint/js": "^10.0.1",
+    "eslint": "^10.4.0",
+    "eslint-plugin-prettier": "^5.5.5",
+    "globals": "^17.6.0",
+    "prettier": "^3.8.3"
+  }
+}

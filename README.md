@@ -135,4 +135,4 @@ npx eslint js/
 
 ## License
 
-[ISC](LICENSE)
+[MIT](LICENSE)

@@ -73,16 +73,26 @@ Personal-Homepage/
 
 ## Instructions to Build
 
+### View the live site
+
+The easiest way to view the project is through the deployed GitHub Pages URL — no setup required:
+
+👉 **[mrejuan3.github.io/Personal-Homepage](https://mrejuan3.github.io/Personal-Homepage/)**
+
+---
+
+### Run locally (for development)
+
 This is a **fully static site** — there is no compile or bundle step. You only need Node.js installed if you want to run the linter.
 
-### 1 — Clone the repository
+#### 1 — Clone the repository
 
 ```bash
 git clone https://github.com/mrejuan3/Personal-Homepage.git
 cd Personal-Homepage
 ```
 
-### 2 — Install dev dependencies (optional — linting only)
+#### 2 — Install dev dependencies (optional — linting only)
 
 ```bash
 npm install
@@ -90,7 +100,7 @@ npm install
 
 This installs ESLint and Prettier. The website itself has no npm runtime dependencies.
 
-### 3 — Open in a browser
+#### 3 — Start a local server
 
 **Option A — VS Code Live Server (recommended)**  
 Install the [Live Server](https://marketplace.visualstudio.com/items?itemName=ritwickdey.LiveServer) extension, right-click `index.html` in the Explorer panel, and choose **Open with Live Server**.  
@@ -102,10 +112,9 @@ python3 -m http.server 8080
 # then open http://localhost:8080 in your browser
 ```
 
-**Option C — Open the file directly**  
-Double-click `index.html` in Finder. Note: `type="module"` scripts require a server (Options A or B) — the page will still display but the card entrance animation on the Projects page will not run when opened as a raw `file://` URL.
+> **Note:** A local server is required because `type="module"` scripts are blocked by browsers on raw `file://` URLs. The page will still display if opened directly in Finder, but the card entrance animation on the Projects page will not run.
 
-### 4 — Lint (optional)
+#### 4 — Lint (optional)
 
 ```bash
 npx eslint js/

@@ -133,6 +133,21 @@ npx eslint js/
 
 ---
 
+## AI Use
+
+**AI assistant:** Claude Code — Opus 4.7 (Anthropic)
+
+| # | Prompt |
+|---|---|
+| 1 | Can you give examples of creative additions to a static personal portfolio website? It can be implemented using ES6+ or HTML+CSS alone. |
+| 2 | Do not edit the code. How do I use classes to identify elements? |
+| 3 | Play the role of a frontend engineer. Please create the projects page. Do not use jQuery, all of the JS code must be in ES6 modules. Use HTML5, CSS3, and ES6+ only. I want each project to be organized using a Bootstrap 5+ grid. There are 6 projects: Exoplanet Exploration, Global Longevity Analysis, NLP Analysis of Tweets by Global Leaders, Breast Cancer Risk Modelling & Clinical Decision Support, Business Scaling & Production, and TA Resource Allocation. Each project must be labelled by technical skill. The title should be "My Projects" in a script font. Each project box should have a design related to the project. |
+| 4 | Can you have the projects page match the style the other pages |
+| 5 | Can you create a clear and descriptive README including: Author, Class Link, Project Objective, Screenshot, Instructions to build |
+| 6 | Add an AI Use section to the README. Only add the AI & model used and AI Prompts |
+
+---
+
 ## License
 
 [MIT](LICENSE)

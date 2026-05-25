@@ -1,0 +1,119 @@
+
+/* the bar */
+.site-nav {
+  position: sticky;
+  top: 0;
+  z-index: 100;
+  background: rgba(255, 255, 255, 0.88);
+  backdrop-filter: blur(10px);
+  border-bottom: 1px solid #e5e7eb;
+  padding: 0 2rem;
+}
+
+/* centering wrapper */
+.nav-inner {
+  max-width: 1200px;
+  margin: 0 auto;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  height: 60px;
+}
+
+/* link list */
+.nav-links {
+  list-style: none;  /* removes bullet points */
+  margin: 0;
+  padding: 0;
+  display: flex;     /* puts links in a horizontal row */
+  gap: 2rem;
+}
+
+.nav-links a {
+  font-size: 0.9rem;
+  font-weight: 500;
+  text-decoration: none;  /* removes underline */
+  color: #050e1f;
+  transition: color 0.2s;
+}
+
+.nav-links a:hover {
+  color: #580ce4;
+}
+
+/* center signature on the page */
+main {
+  min-height: calc(100vh - 60px); /* full viewport minus nav height */
+  display: flex;
+  align-items: center;     /* vertical center */
+  justify-content: center; /* horizontal center */
+}
+
+/* signature */
+
+.signature svg {
+  overflow: visible;
+}
+
+.signature path {
+  fill: none;
+  stroke: black;
+  stroke-width: 1;
+  stroke-dasharray: 2000;
+  stroke-dashoffset: 2000;
+  animation: draw 4s ease-in-out forwards;
+}
+
+/* Stagger each letter so they draw in sequence */
+.signature path:nth-child(1)  { animation-delay: 0s;   }
+.signature path:nth-child(2)  { animation-delay: 0.3s; }
+.signature path:nth-child(3)  { animation-delay: 0.6s; }
+.signature path:nth-child(4)  { animation-delay: 0.9s; }
+.signature path:nth-child(5)  { animation-delay: 1.2s; }
+.signature path:nth-child(6)  { animation-delay: 1.5s; }
+.signature path:nth-child(7)  { animation-delay: 1.8s; }
+.signature path:nth-child(8)  { animation-delay: 2.1s; }
+.signature path:nth-child(9)  { animation-delay: 2.4s; }
+.signature path:nth-child(10) { animation-delay: 2.7s; }
+.signature path:nth-child(11) { animation-delay: 3.0s; }
+.signature path:nth-child(12) { animation-delay: 3.3s; }
+.signature path:nth-child(13) { animation-delay: 3.6s; }
+
+@keyframes draw {
+  to {
+    stroke-dashoffset: 0;
+  }
+}
+
+.hero {
+  display: flex;
+  flex-direction: column;  /* stacks children top to bottom */
+  align-items: center;     /* centers each child horizontally */
+  gap: 1rem;               /* space between the three elements */
+}
+
+.greeting {
+  font-size: 1.2rem;
+  color: #d71e6e;  /* muted gray */
+  margin: 0;
+}
+
+.tagline {
+  font-size: 1.2rem;
+  color: #d71e6e;
+  margin: 0;
+}
+
+.intro {
+  font-size: 2.0rem;
+  color: #530828;
+  margin: 0;
+}
+
+.site-footer {
+  text-align: center;
+  padding: 1.5rem;
+  font-size: 0.85rem;
+  color: #6b7280;
+  letter-spacing: 0.1em;
+}

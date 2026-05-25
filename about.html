@@ -29,15 +29,48 @@
       href="./images/favicon_io/favicon-16x16.png"
     />
     <link rel="manifest" href="./images/favicon_io/site.webmanifest" />
+    <link rel="stylesheet" href="./css/about.css" />
   </head>
   <body>
-    <h1></h1>
-    <nav>
-      <a href="./index.html">Home</a>
-      <a href="./about.html">About</a>
-      <a href="./projects.html">Projects</a>
+    <nav class="site-nav">
+      <div class="nav-inner">
+        <ul class="nav-links">
+          <li><a href="./index.html">Home</a></li>
+          <li><a href="./about.html">About</a></li>
+          <li><a href="./projects.html" class="active">Projects</a></li>
+        </ul>
+      </div>
     </nav>
-
+    <main>
+      <!-- Photo + paragraph -->
+      <section class="about-hero">
+        <img
+          src="./images/photo.jpeg"
+          alt="Photo of Melissa Rejuan"
+          class="about-photo"
+        />
+        <section class="about-paragraph">
+          <h1 class="about-title">About Me</h1>
+          <p>
+            Hi! My name is Melissa Rejuan. I grew up in Staten Island, New York
+            and moved to Boston in 2021 to pursue a Bachelor’s in Data Science
+            and Journalism at Northeastern University. I graduated in Fall 2025
+            and I continued my education at Northeastern, pursuing a Master’s in
+            Data Science via the PlusOne program. My time at Northeastern was
+            deeply valuable. I did my first co-op at Insulet and then my second
+            one at The Boston Globe. I studied abroad in Spain for a few months
+            and produced a short documentary while I was there. After I came back, I decided to
+            pursue my own venture! I founded a start-up called Navda AI, where
+            we provide AI receptionist services across various industries.
+            Currently, I am working on finishing up my masters, which will be
+            done in August! Aside from my education and work experience, I love
+            to cook, bake, and watch documentaries. I am a big history fan. I
+            love to spend time with family, friends, and go on runs,
+            specifically at scenic parks!
+          </p>
+        </section>
+      </section>
+    </main>
     <script type="module" src="./js/main.js"></script>
   </body>
 </html>

@@ -2,6 +2,8 @@
 
 A multi-page personal portfolio website built with vanilla HTML5, CSS3, and ES6+ modules.
 
+🔗 **Live site:** [mrejuan3.github.io/Personal-Homepage](https://mrejuan3.github.io/Personal-Homepage/)
+
 ---
 
 ## Author
@@ -43,8 +45,6 @@ Build a fully static, three-page personal homepage that demonstrates core front-
 
 <!-- After taking a screenshot, save it to images/screenshot.png and remove this comment -->
 ![Homepage screenshot](images/screenshot.png)
-
-> **To add your own screenshot:** open `index.html` in a browser, take a full-page screenshot, save it as `images/screenshot.png`, and the image above will appear automatically.
 
 ---
 

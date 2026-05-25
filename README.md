@@ -15,7 +15,7 @@ GitHub: [@mrejuan3](https://github.com/mrejuan3)
 ## Class
 
 <!-- Replace the URL below with the actual course link -->
-[Web Development – Course Page](https://placeholder.course.link)
+[Web Development – Course Page](https://johnguerra.co/classes/webDevelopment_online_summer_2026/)
 
 ---
 

@@ -25,11 +25,12 @@
   margin: 0;
   padding: 0;
   display: flex;     /* puts links in a horizontal row */
+  align-items: center;
   gap: 2rem;
 }
 
 .nav-links a {
-  font-size: 0.9rem;
+  font-size: 1.05rem;
   font-weight: 500;
   text-decoration: none;  /* removes underline */
   color: #050e1f;
@@ -40,12 +41,19 @@
   color: #580ce4;
 }
 
+/* linkedin and email logos */
+.nav-icon {
+  display: block;
+}
+
 /* two-column layout for photo & paragraph */
 .about-hero {
   display: flex;
-  gap: 2rem;
+  gap: 3rem;
   align-items: center;
-  padding: 4rem 2rem;
+  max-width: 960px;     /* keeps lines a comfortable reading length */
+  margin: 0 auto;       /* centers the content with even space on both sides */
+  padding: 5rem 3rem;
 }
 
 .about-photo {
@@ -53,6 +61,22 @@
   height: 200px;
   border-radius: 50%;   /* makes it a circle */
   object-fit: cover;    /* crops the image to fit */
+  flex-shrink: 0;       /* keeps the photo a full circle */
+}
+
+/* small screens: photo on top, text full width below */
+@media (max-width: 640px) {
+  .about-hero {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 1.5rem;
+    padding: 3rem 2rem;
+  }
+
+  .about-photo {
+    width: 160px;
+    height: 160px;
+  }
 }
 
 /* spacing for each section */
@@ -66,6 +90,60 @@
   font-size: 2.0rem;
   color: #b6195d;
   margin: 0;
+}
+
+/* title writes itself in: outline traced first, then filled */
+.title-draw {
+  display: block;
+  width: 160px;
+  max-width: 100%;       /* shrinks with the column on small screens */
+  height: auto;
+  overflow: visible;
+}
+
+.title-draw text {
+  font-family: serif;
+  font-size: 32px;
+  font-weight: bold;
+  fill: transparent;
+  stroke: #b6195d;
+  stroke-width: 0.8;
+  stroke-dasharray: 300;
+  stroke-dashoffset: 300;
+  animation:
+    title-write 1.6s ease-in-out forwards,
+    title-fill 0.8s ease 1.1s forwards;
+}
+
+@keyframes title-write {
+  to {
+    stroke-dashoffset: 0;
+  }
+}
+
+@keyframes title-fill {
+  to {
+    fill: #b6195d;
+  }
+}
+
+/* keeps the title readable for screen readers */
+.visually-hidden {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  overflow: hidden;
+  clip: rect(0 0 0 0);
+  white-space: nowrap;
+}
+
+/* no writing animation for visitors who prefer reduced motion */
+@media (prefers-reduced-motion: reduce) {
+  .title-draw text {
+    animation: none;
+    fill: #b6195d;
+    stroke-dashoffset: 0;
+  }
 }
 
 

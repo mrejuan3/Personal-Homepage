@@ -1,37 +1,3 @@
-/* =========================================================
-   projects.css — Projects page styles
-   ========================================================= */
-
-:root {
-  --bg: #f5f6fa;
-  --card-bg: #ffffff;
-  --text-primary: #1a1a2e;
-  --text-secondary: #6b7280;
-  --tag-bg: #eef2ff;
-  --tag-color: #3730a3;
-  --card-radius: 14px;
-  --card-shadow: 0 4px 24px rgba(0, 0, 0, 0.07);
-  --card-hover-shadow: 0 18px 52px rgba(0, 0, 0, 0.14);
-}
-
-/* ── Base ─────────────────────────────────────────────── */
-*,
-*::before,
-*::after {
-  box-sizing: border-box;
-}
-
-body {
-  margin: 0;
-}
-
-/* apply font only to card content, not the whole page */
-.card-body-content {
-  font-family: 'Inter', system-ui, sans-serif;
-  color: var(--text-primary);
-}
-
-/* ── Nav ──────────────────────────────────────────────── */
 /* the bar */
 .site-nav {
   position: sticky;
@@ -59,11 +25,12 @@ body {
   margin: 0;
   padding: 0;
   display: flex;     /* puts links in a horizontal row */
+  align-items: center;
   gap: 2rem;
 }
 
 .nav-links a {
-  font-size: 0.9rem;
+  font-size: 1.05rem;
   font-weight: 500;
   text-decoration: none;  /* removes underline */
   color: #050e1f;
@@ -74,130 +41,250 @@ body {
   color: #580ce4;
 }
 
-/* ── Page header ──────────────────────────────────────── */
+/* linkedin and email logos */
+.nav-icon {
+  display: block;
+}
+
+/* holds the looping line behind the page content */
+.projects-main {
+  position: relative;
+  overflow: hidden;      /* keeps the line's turns inside the page */
+}
+
+/* looping line drawn as you scroll (js/flourish.js) */
+.flourish {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  pointer-events: none;  /* clicks pass through to the cards */
+}
+
+.flourish-line {
+  fill: none;
+  stroke: #d71e6e;
+  stroke-width: 1.5;
+  stroke-linecap: round;
+  stroke-linejoin: round;
+  opacity: 0.75;
+}
+
+.flourish-heart {
+  fill: #d71e6e;
+  transition: opacity 0.3s;
+}
+
+/* title in the center */
 .projects-header {
-  text-align: center;
-  padding: 4.5rem 1rem 2.5rem;
+  position: relative;    /* sits above the line */
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding: 4rem 2rem 3.5rem;
 }
 
 .projects-title {
-  font-family: 'Dancing Script', cursive;
-  font-size: clamp(3rem, 7vw, 5rem);
-  font-weight: 700;
-  color: var(--text-primary);
-  margin: 0 0 0.5rem;
-  line-height: 1.1;
-}
-
-.projects-subtitle {
-  font-size: 1rem;
-  color: var(--text-secondary);
+  font-size: 2.0rem;
+  color: #b6195d;
   margin: 0;
 }
 
-/* ── Grid section ─────────────────────────────────────── */
-.projects-section {
-  padding-bottom: 5rem;
+/* title writes itself in: outline traced first, then filled */
+.title-draw {
+  display: block;
+  width: 240px;
+  height: 48px;
+  overflow: visible;
 }
 
-/* ── Project card ─────────────────────────────────────── */
-.project-card {
-  background: var(--card-bg);
-  border-radius: var(--card-radius);
+.title-draw text {
+  font-family: serif;
+  font-size: 32px;
+  font-weight: bold;
+  fill: transparent;
+  stroke: #b6195d;
+  stroke-width: 0.8;
+  stroke-dasharray: 300;
+  stroke-dashoffset: 300;
+  animation:
+    title-write 1.6s ease-in-out forwards,
+    title-fill 0.8s ease 1.1s forwards;
+}
+
+@keyframes title-write {
+  to {
+    stroke-dashoffset: 0;
+  }
+}
+
+@keyframes title-fill {
+  to {
+    fill: #b6195d;
+  }
+}
+
+/* keeps the title readable for screen readers */
+.visually-hidden {
+  position: absolute;
+  width: 1px;
+  height: 1px;
   overflow: hidden;
-  box-shadow: var(--card-shadow);
+  clip: rect(0 0 0 0);
+  white-space: nowrap;
+}
+
+/* space below the grid */
+.projects-section {
+  position: relative;    /* sits above the line */
+  padding-bottom: 4rem;
+}
+
+/* taller gaps between rows give the line room to loop */
+.projects-section .row {
+  --bs-gutter-y: 3.5rem;
+}
+
+/* each column holds a card and its pink frame */
+.projects-section .row > div {
+  position: relative;
+}
+
+/* pink hairline frame around the card, traced by the pen (flourish.js) */
+.card-frame {
+  position: absolute;
+  top: -6px;
+  left: calc(var(--bs-gutter-x) * 0.5 - 6px);
+  width: calc(100% - var(--bs-gutter-x) + 12px);
+  height: calc(100% + 12px);
+  overflow: visible;
+  pointer-events: none;
+}
+
+.card-frame rect {
+  fill: none;
+  stroke: #d71e6e;
+  stroke-width: 1;
+  stroke-dasharray: 100;
+  stroke-dashoffset: 100;
+  transition: stroke-dashoffset 1s ease-in-out;
+}
+
+.traced .card-frame rect {
+  stroke-dashoffset: 0;
+}
+
+/* each project box */
+.project-card {
+  position: relative;    /* lets the github link cover the whole box */
+  background: #ffffff;   /* hides the line where it passes behind */
+  aspect-ratio: 1 / 1;   /* keeps every box square */
   display: flex;
   flex-direction: column;
-  /* entrance animation — start hidden */
+  border: 1px solid #e5e7eb;
+  border-radius: 0;      /* sharp, square corners */
+  overflow: hidden;      /* keeps the picture inside the box */
+  /* starts hidden, flourish.js adds .visible as the line passes over it */
   opacity: 0;
-  transform: translateY(28px);
+  transform: translateY(18px) scale(0.96);
   transition:
-    opacity 0.5s ease,
-    transform 0.5s ease,
-    box-shadow 0.3s ease;
+    opacity 0.6s ease,
+    transform 0.7s cubic-bezier(0.34, 1.4, 0.64, 1),  /* soft pop with a small overshoot */
+    border-color 0.3s;
 }
 
 .project-card.visible {
   opacity: 1;
-  transform: translateY(0);
+  transform: none;
 }
 
-.project-card.visible:hover {
-  transform: translateY(-7px);
-  box-shadow: var(--card-hover-shadow);
+/* hover: pink border, only on cards that link somewhere */
+.project-card:has(.github-link):hover,
+.project-card:focus-within {
+  border-color: #d71e6e;
 }
 
-/* ── Card visual (SVG illustration header) ────────────── */
+/* picture fills whatever space the text doesn't need,
+   set inside a thin white mat like framed art */
 .card-visual {
-  height: 180px;
+  flex: 1;
+  min-height: 25%;
+  padding: 10px 10px 0;
   overflow: hidden;
-  flex-shrink: 0;
 }
 
+/* slightly muted until hover, then blooms to full color */
 .card-visual svg {
   width: 100%;
   height: 100%;
   display: block;
+  filter: saturate(0.6);
+  transition: filter 0.6s ease;
 }
 
-/* ── Card body ────────────────────────────────────────── */
+.project-card:hover .card-visual svg,
+.project-card:focus-within .card-visual svg {
+  filter: none;
+}
+
+/* text under the picture */
+/* same height on every card (room for a 2-line title and 6-line description),
+   so pictures and links line up across each row */
 .card-body-content {
-  padding: 1.4rem 1.5rem 1.6rem;
+  box-sizing: border-box;
+  min-height: 14.75rem;
   display: flex;
   flex-direction: column;
-  flex: 1;
+  gap: 0.6rem;
+  padding: 1rem 1.25rem 1.25rem;
 }
 
 .card-project-title {
-  font-size: 1rem;
-  font-weight: 600;
-  line-height: 1.4;
-  margin: 0 0 0.85rem;
-  color: var(--text-primary);
+  font-size: 1.2rem;
+  line-height: 1.2;
+  color: #530828;
+  margin: 0;
 }
 
-/* ── Skill tags ───────────────────────────────────────── */
-.skill-tags {
-  list-style: none;
-  padding: 0;
-  margin: 0 0 1.2rem;
-  display: flex;
-  flex-wrap: wrap;
-  gap: 0.4rem;
-  /* min-height reserves space before tags are added */
-  min-height: 26px;
-  flex: 1;
-  align-content: flex-start;
+/* short summary under the title */
+.card-description {
+  font-size: 0.9rem;
+  line-height: 1.35;
+  margin: 0;
 }
 
-.skill-tag {
-  font-size: 0.72rem;
-  font-weight: 500;
-  padding: 0.2rem 0.6rem;
-  border-radius: 20px;
-  background: var(--tag-bg);
-  color: var(--tag-color);
-  white-space: nowrap;
-}
-
-/* ── GitHub link ──────────────────────────────────────── */
+/* github button */
 .github-link {
+  margin-top: auto;       /* sits at the bottom of the text area */
+  align-self: flex-start;
   display: inline-flex;
   align-items: center;
   gap: 0.4rem;
-  font-size: 0.83rem;
+  font-size: 0.9rem;
   font-weight: 500;
-  color: var(--text-secondary);
-  text-decoration: none;
-  border: 1px solid #d1d5db;
-  border-radius: 7px;
-  padding: 0.38rem 0.85rem;
-  align-self: flex-start;
-  transition: color 0.2s, border-color 0.2s, background 0.2s;
+  text-decoration: none;  /* removes underline */
+  color: #050e1f;
+  transition: color 0.2s;
 }
 
-.github-link:hover {
-  color: var(--text-primary);
-  border-color: var(--text-primary);
-  background: #f3f4f6;
+/* stretches the link over the whole box so the box is clickable */
+.github-link::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+}
+
+.project-card:hover .github-link,
+.github-link:focus-visible {
+  color: #580ce4;
+}
+
+/* no writing animation for visitors who prefer reduced motion */
+@media (prefers-reduced-motion: reduce) {
+  .title-draw text {
+    animation: none;
+    fill: #b6195d;
+    stroke-dashoffset: 0;
+  }
 }
